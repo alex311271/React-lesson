@@ -2,27 +2,36 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-		// декларативный стиль
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-				<p>{new Date().getFullYear()}</p>
-			</header>
-		</div>
-	);
+export const App = () => {
+  const year = new Date().getFullYear()
+
+	const app = document.createElement('div')
+	app.className = 'App'
+
+	const header = document.createElement('header')
+	header.className = 'App-header'
+	app.append(header)
+
+	const logoIMG = document.createElement('img')
+	logoIMG.className = 'App-logo'
+	logoIMG.alt = 'logo'
+	logoIMG.src = logo
+	header.append(logoIMG)
+
+	const paragraph = document.createElement('p')
+	paragraph.textContent = 'Edit src/App.js and save to reload.'
+	header.append(paragraph)
+
+	const link = document.createElement('a')
+	link.className = 'App-link'
+	link.href = 'https://reactjs.org'
+	link.text = 'Learn React'
+	header.append(link)
+
+	const elementYear = document.createElement('p')
+	elementYear.textContent = year
+	header.append(elementYear)
+
+	return app
 }
 
-export default App;
